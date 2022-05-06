@@ -1,0 +1,6 @@
+GET http://{{host}}/createdemoapplication1 HTTP/1.1
+
+###
+GET http://{{host}}/unknown HTTP/1.1
+
+###

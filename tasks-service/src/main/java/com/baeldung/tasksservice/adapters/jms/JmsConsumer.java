@@ -1,4 +1,4 @@
-package com.baeldung.tasksservice;
+package com.baeldung.tasksservice.adapters.jms;
 
 import org.springframework.stereotype.Service;
 import org.springframework.jms.annotation.JmsListener;
