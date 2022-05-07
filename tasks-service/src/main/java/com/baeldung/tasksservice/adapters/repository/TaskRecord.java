@@ -15,7 +15,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.OffsetDateTime;
+import java.time.Instant;
 
 @Entity
 @Table(name = "tasks")
@@ -25,55 +25,53 @@ public class TaskRecord {
     private String id;
     private String title;
     @Column(name = "created_at")
-    private OffsetDateTime created;
+    private Instant created;
     @Column(name = "created_by")
     private String createdBy;
     @Column(name = "assigned_to")
     private String assignedTo;
     private String status;
 
-    public String getId() {
-        return id;
+    public TaskRecord(final String id, final String title, final Instant created, final String createdBy,
+        final String assignedTo, final String status) {
+        this.id = id;
+        this.title = title;
+        this.created = created;
+        this.createdBy = createdBy;
+        this.assignedTo = assignedTo;
+        this.status = status;
     }
 
-    public void setId(final String id) {
-        this.id = id;
+    private TaskRecord() {
+        // Needed for JPA
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(final String title) {
-        this.title = title;
-    }
-
-    public OffsetDateTime getCreated() {
+    public Instant getCreated() {
         return created;
-    }
-
-    public void setCreated(final OffsetDateTime created) {
-        this.created = created;
     }
 
     public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(final String createdBy) {
-        this.createdBy = createdBy;
-    }
-
     public String getAssignedTo() {
         return assignedTo;
     }
 
-    public void setAssignedTo(final String assignedTo) {
-        this.assignedTo = assignedTo;
-    }
-
     public String getStatus() {
         return status;
+    }
+
+    public void setAssignedTo(final String assignedTo) {
+        this.assignedTo = assignedTo;
     }
 
     public void setStatus(final String status) {

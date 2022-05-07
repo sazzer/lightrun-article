@@ -9,16 +9,9 @@
  *
  ******************************************************************************************************************/
 
-package com.baeldung.tasksservice.adapters.repository;
+package com.baeldung.tasksservice.adapters.http;
 
-import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface TasksRepository extends JpaRepository<TaskRecord, String> {
-    List<TaskRecord> findByStatus(String status);
-    List<TaskRecord> findByCreatedBy(String createdBy);
-    List<TaskRecord> findByStatusAndCreatedBy(String status, String createdBy);
+public record PatchTaskRequest(Optional<String> status, Optional<String> assignedTo) {
 }

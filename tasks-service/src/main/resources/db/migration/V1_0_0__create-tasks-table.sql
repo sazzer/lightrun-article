@@ -8,6 +8,6 @@ CREATE TABLE tasks (
 );
 
 INSERT INTO tasks(task_id, title, created_at, created_by, assigned_to, status) VALUES
-    ('createdemoapplication1', 'Create demo applications - Tasks', '2022-05-05 12:34:56', 'baeldung', 'coxg', 'COMPLETE'),
-    ('createdemoapplication2', 'Create demo applications - Users', '2022-05-05 12:34:56', 'baeldung', 'coxg', 'COMPLETE'),
-    ('createdemoapplication3', 'Create demo applications - API', '2022-05-05 12:34:56', 'baeldung', 'coxg', 'COMPLETE');
+    ('createdemoapplication1', 'Create demo applications - Tasks', '2022-05-05 12:34:56', 'baeldung', 'coxg', 'IN_PROGRESS'),
+    ('createdemoapplication2', 'Create demo applications - Users', '2022-05-05 12:34:56', 'baeldung', NULL, 'PENDING'),
+    ('createdemoapplication3', 'Create demo applications - API', '2022-05-05 12:34:56', 'baeldung', NULL, 'PENDING');
