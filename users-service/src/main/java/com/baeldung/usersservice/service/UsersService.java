@@ -17,15 +17,20 @@ import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
+import com.baeldung.usersservice.adapters.jms.JmsSender;
 import com.baeldung.usersservice.adapters.repository.UserRecord;
 import com.baeldung.usersservice.adapters.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UsersService {
     @Autowired
     private UsersRepository usersRepository;
+
+    @Autowired
+    private JmsSender jmsSender;
 
     public UserRecord getUserById(String id) {
         return usersRepository.findById(id).orElseThrow(() -> new UnknownUserException(id));
@@ -35,6 +40,8 @@ public class UsersService {
     public void deleteUserById(String id) {
         var user = usersRepository.findById(id).orElseThrow(() -> new UnknownUserException(id));
         usersRepository.delete(user);
+
+        jmsSender.sendDeleteUserMessage(id);
     }
 
     @Transactional

@@ -10,8 +10,8 @@ public class JmsConsumer {
 
     Logger log = LoggerFactory.getLogger(JmsConsumer.class);
 
-    @JmsListener(destination = "${spring.jms.template.default-destination}")
+    @JmsListener(destination = "deleted_user")
     public void receive(String message) {
-	log.info("Received message='{}'", message);
+	    log.info("Received message='{}'", message);
     }
 }
