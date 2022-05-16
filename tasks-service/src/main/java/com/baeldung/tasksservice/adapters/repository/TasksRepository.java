@@ -19,6 +19,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TasksRepository extends JpaRepository<TaskRecord, String> {
     List<TaskRecord> findByStatus(String status);
+
     List<TaskRecord> findByCreatedBy(String createdBy);
+
     List<TaskRecord> findByStatusAndCreatedBy(String status, String createdBy);
+
+    List<TaskRecord> findByAssignedTo(String assignedTo);
 }
